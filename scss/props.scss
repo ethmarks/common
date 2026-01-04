@@ -1,3 +1,28 @@
+@use "sass:string";
+
+@function clr-mix($color-var, $target, $percent: 95%) {
+    $target-str: #{$target};
+    $target-value: if(
+        sass(string.index($target-str, "--") == 1): var(#{$target}) ;
+            else: $target,
+    );
+    @return color-mix(
+        in srgb,
+        var(#{$color-var}) #{$percent},
+        #{$target-value}
+    );
+}
+
+@function clr-alpha($color-var, $opacity: 0.1) {
+    $percent: $opacity * 100%;
+    $color-str: #{$color-var};
+    $base: if(
+        sass(string.index($color-str, "--") == 1): var(#{$color-var}) ;
+            else: $color-var,
+    );
+    @return color-mix(in srgb, #{$base} #{$percent}, transparent);
+}
+
 :root {
     // =========================================================================
     // COLOR
@@ -6,57 +31,32 @@
     --color-background: #121212;
 
     --color-accent: #8fdfd4;
-    --color-accent-light: color-mix(in srgb, var(--color-accent) 95%, white);
-    --color-accent-dark: color-mix(in srgb, var(--color-accent) 90%, black);
-    --color-accent-transparent-10: color-mix(
-        in srgb,
-        var(--color-accent) 10%,
-        transparent
-    );
-    --color-accent-transparent-15: color-mix(
-        in srgb,
-        var(--color-accent) 15%,
-        transparent
-    );
-    --color-accent-transparent-20: color-mix(
-        in srgb,
-        var(--color-accent) 20%,
-        transparent
-    );
-    --color-accent-transparent-30: color-mix(
-        in srgb,
-        var(--color-accent) 30%,
-        transparent
-    );
-    --color-accent-transparent-40: color-mix(
-        in srgb,
-        var(--color-accent) 40%,
-        transparent
-    );
+
+    --color-accent-light: #{clr-mix(--color-accent, white, 95%)};
+    --color-accent-dark: #{clr-mix(--color-accent, black, 90%)};
+
+    --color-accent-transparent-10: #{clr-alpha(--color-accent, 0.1)};
+    --color-accent-transparent-15: #{clr-alpha(--color-accent, 0.15)};
+    --color-accent-transparent-20: #{clr-alpha(--color-accent, 0.2)};
+    --color-accent-transparent-30: #{clr-alpha(--color-accent, 0.3)};
+    --color-accent-transparent-40: #{clr-alpha(--color-accent, 0.4)};
 
     --color-text: white;
     --color-text-inverse: #121212;
-    --color-text-secondary: color-mix(in srgb, var(--color-text) 70%, black);
+    --color-text-secondary: #{clr-mix(--color-text, black, 70%)};
+
     --color-link: var(--color-accent-light);
     --color-link-hover: var(--color-text);
-    --color-link-underline: color-mix(
-        in srgb,
-        var(--color-accent) 30%,
-        transparent
-    );
+    --color-link-underline: #{clr-alpha(--color-accent, 0.3)};
     --color-link-underline-hover: var(--color-accent);
     --color-focus-outline: var(--color-accent-light);
 
     --color-article: rgb(30, 30, 30);
     --color-panel: rgb(31, 31, 31);
-    --color-panel-zebra: color-mix(in srgb, var(--color-panel) 90%, black);
-    --color-panel-dark: color-mix(in srgb, var(--color-panel) 75%, black);
-    --color-panel-hover: color-mix(in srgb, var(--color-panel) 96%, white);
-    --color-panel-hover-subtle: color-mix(
-        in srgb,
-        var(--color-panel) 99%,
-        white
-    );
+    --color-panel-zebra: #{clr-mix(--color-panel, black, 90%)};
+    --color-panel-dark: #{clr-mix(--color-panel, black, 75%)};
+    --color-panel-hover: #{clr-mix(--color-panel, white, 96%)};
+    --color-panel-hover-subtle: #{clr-mix(--color-panel, white, 99%)};
 
     --color-card: rgba(40, 40, 40, 0.8);
     --color-card-hover: rgba(50, 50, 50, 0.9);
@@ -68,27 +68,18 @@
         var(--color-accent),
         var(--color-text)
     );
-    --mint-blend: color-mix(
-        in srgb,
-        var(--color-accent) 75%,
-        var(--color-text)
-    );
+
+    --mint-blend: #{clr-mix(--color-accent, --color-text, 75%)};
 
     // =========================================================================
     // BORDER
     // =========================================================================
 
     --color-border: white;
-    --color-border-standard: color-mix(
-        in srgb,
-        var(--color-border) 10%,
-        transparent
-    );
-    --color-border-light: color-mix(
-        in srgb,
-        var(--color-border) 5%,
-        transparent
-    );
+
+    --color-border-standard: #{clr-alpha(--color-border, 0.1)};
+    --color-border-light: #{clr-alpha(--color-border, 0.05)};
+
     --border-standard: 1px solid var(--color-border-standard);
     --border-standard-2px: 2px solid var(--color-border-standard);
     --border-light: 1px solid var(--color-border-light);
@@ -149,11 +140,12 @@
     // SHADOW
     // =========================================================================
 
-    --color-shadow-standard: rgba(0, 0, 0, 0.2);
+    --color-shadow-standard: #{clr-alpha(black, 0.2)};
     --color-shadow-accent: var(--color-accent-transparent-30);
     --color-shadow-accent-hover: var(--color-accent-transparent-40);
-    --shadow-standard: 0 4px 15px rgba(0, 0, 0, 0.2);
-    --shadow-standard-hover: 0 4px 30px rgba(0, 0, 0, 0.3);
+
+    --shadow-standard: 0 4px 15px #{clr-alpha(black, 0.2)};
+    --shadow-standard-hover: 0 4px 30px #{clr-alpha(black, 0.3)};
     --shadow-accent: 0 4px 12px var(--color-shadow-accent);
     --shadow-accent-hover: 0 0 16px var(--color-shadow-accent-hover);
     --shadow-birthday:
@@ -196,15 +188,17 @@
     --body-bg-gradient:
         radial-gradient(
             circle at 10% 10%,
-            rgba(143, 223, 212, 0.15),
+            #{clr-alpha(--color-accent, 0.15)},
             transparent 40%
         ),
         radial-gradient(
             circle at 90% 80%,
-            rgba(143, 223, 212, 0.12),
+            #{clr-alpha(--color-accent, 0.12)},
             transparent 50%
         ),
         var(--color-background);
+
+    --article-margin-vertical: clamp(1rem, 4vw, 1.875rem);
 
     --main-width: 100vw;
     --main-width-mobile: 98vw;
@@ -219,13 +213,11 @@
         --main-width: var(--main-width-mobile);
     }
 
-    --article-margin-vertical: clamp(1rem, 4vw, 1.875rem);
-
     // =========================================================================
     // FOOTER
     // =========================================================================
 
-    --footer-bg: color-mix(in srgb, white 10%, var(--color-background));
+    --footer-bg: #{clr-mix(--color-background, white, 90%)};
     --footer-border-color: rgba(255, 255, 255, 0.18);
     --footer-border: 1px solid var(--footer-border-color);
     --footer-radius: var(--radius-lg);
