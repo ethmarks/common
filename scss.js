@@ -10,19 +10,22 @@ async function processSingleSCSS(inFile, outFile) {
 }
 
 async function processAllSCSS(inDir, outDir) {
-  const files = await readdir(inDir);
-  await Promise.all(
-    files.map((file) =>
-      processSingleSCSS(
-        join(inDir, file),
-        join(outDir, file.replace(".scss", ".css")),
-      ),
-    ),
-  );
+  const entries = await readdir(inDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const inPath = join(inDir, entry.name);
+    const outPath = join(outDir, entry.name);
+
+    if (entry.isDirectory()) {
+      await mkdir(outPath, { recursive: true });
+      await processAllSCSS(inPath, outPath);
+    } else if (entry.isFile() && entry.name.endsWith(".scss")) {
+      await processSingleSCSS(inPath, outPath.replace(".scss", ".css"));
+    }
+  }
 }
 
 export async function scssPipeline(inDir, outDir) {
-  await mkdir("dist", { recursive: true });
-
+  await mkdir(outDir, { recursive: true });
   await processAllSCSS(inDir, outDir);
 }
