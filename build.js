@@ -1,3 +1,6 @@
-import { main } from "./scss.js";
+import { scssPipeline } from "./scss.js";
 
-await main();
+const OUT_DIR = "dist/";
+
+const SCSS_DIR = "scss/";
+await scssPipeline(SCSS_DIR, OUT_DIR);
