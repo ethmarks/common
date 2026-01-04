@@ -1,6 +1,12 @@
-import { scssPipeline } from "./scss.js";
+import * as fs from "fs/promises";
 
-const OUT_DIR = "dist/";
+export const OUT_DIR = "dist/";
+await fs.mkdir(OUT_DIR, { recursive: true });
 
-const SCSS_DIR = "scss/";
-await scssPipeline(SCSS_DIR, OUT_DIR);
+// ============================================================================
+// SCSS
+// ============================================================================
+
+import { processSCSS } from "./scss.js";
+
+await processSCSS("scss/props");

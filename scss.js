@@ -1,31 +1,20 @@
 import * as sass from "sass";
-import { writeFile, mkdir, readdir } from "fs/promises";
-import { join } from "path";
+import * as fs from "fs/promises";
+import * as path from "path";
+import { OUT_DIR } from "./build.js";
 
-async function processSingleSCSS(inFile, outFile) {
+export async function processSCSS(inFile) {
+  if (!path.extname(inFile)) {
+    inFile += ".scss";
+  }
+
+  const pathParts = inFile.split(path.sep);
+  pathParts[0] = OUT_DIR;
+  const outFile = pathParts.join(path.sep).replace(/\.scss$/, ".css");
+
   const result = await sass.compileAsync(inFile, {
     style: "compressed",
   });
-  await writeFile(outFile, result.css);
-}
 
-async function processAllSCSS(inDir, outDir) {
-  const entries = await readdir(inDir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const inPath = join(inDir, entry.name);
-    const outPath = join(outDir, entry.name);
-
-    if (entry.isDirectory()) {
-      await mkdir(outPath, { recursive: true });
-      await processAllSCSS(inPath, outPath);
-    } else if (entry.isFile() && entry.name.endsWith(".scss")) {
-      await processSingleSCSS(inPath, outPath.replace(".scss", ".css"));
-    }
-  }
-}
-
-export async function scssPipeline(inDir, outDir) {
-  await mkdir(outDir, { recursive: true });
-  await processAllSCSS(inDir, outDir);
+  await fs.writeFile(outFile, result.css);
 }
