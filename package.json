@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ethmarks/common/issues"
   },
-  "homepage": "https://github.com/ethmarks/common#readme"
+  "homepage": "https://github.com/ethmarks/common#readme",
+  "devDependencies": {
+    "sass": "^1.97.1",
+    "svelte": "^5.46.1"
+  }
 }
