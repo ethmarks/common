@@ -3,6 +3,20 @@ import * as fs from "fs/promises";
 import * as path from "path";
 import * as esbuild from "esbuild";
 
+async function bundleSvelte(source, outDir, filename, outExt) {
+  const tempPath = path.join(outDir, `${filename}.temp.js`);
+  await fs.writeFile(tempPath, source);
+  await esbuild.build({
+    entryPoints: [tempPath],
+    bundle: true,
+    format: "iife",
+    outfile: path.join(outDir, `${filename}${outExt}`),
+    platform: "browser",
+    minify: true,
+  });
+  await fs.unlink(tempPath);
+}
+
 async function processSvelteWC(inFile, outDir, wcPrefix = "eth") {
   const source = await fs.readFile(inFile, "utf-8");
   const filename = path.basename(inFile, ".svelte");
@@ -19,21 +33,7 @@ async function processSvelteWC(inFile, outDir, wcPrefix = "eth") {
     css: "injected",
   });
 
-  const tempPath = path.join(outDir, `${filename}.wc.temp.js`);
-  await fs.writeFile(tempPath, wcResult.js.code);
-
-  // Bundle with esbuild to include Svelte runtime
-  const result = await esbuild.build({
-    entryPoints: [tempPath],
-    bundle: true,
-    format: "iife",
-    outfile: path.join(outDir, `${filename}.wc.js`),
-    platform: "browser",
-    minify: true,
-  });
-
-  // Clean up temp file
-  await fs.unlink(tempPath);
+  await bundleSvelte(wcResult.js.code, outDir, filename, ".wc.js");
 }
 
 async function processSvelteMJS(inFile, outDir) {
