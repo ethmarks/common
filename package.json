@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/ethmarks/common#readme",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.54.0",
     "sass": "^1.97.1",
     "svelte": "^5.46.1"
   },
