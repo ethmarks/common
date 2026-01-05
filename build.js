@@ -40,6 +40,14 @@ await copyOut("fonts/Sen-latin.woff2");
 await copyOut("fonts/Sen-latin-ext.woff2");
 
 // ============================================================================
+// Misc
+// ============================================================================
+//
+// This section handles one-off miscellaneous assets
+
+await copyOut("misc/favicon.ico");
+
+// ============================================================================
 // Hardpoint Verification
 // ============================================================================
 //
@@ -69,3 +77,5 @@ hardpoint("Nunito-latin-ext-italic.woff2");
 hardpoint("Nunito-latin-italic.woff2");
 hardpoint("Sen-latin.woff2");
 hardpoint("Sen-latin-ext.woff2");
+
+hardpoint("favicon.ico");
