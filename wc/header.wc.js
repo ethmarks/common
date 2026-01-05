@@ -1,23 +1,31 @@
-class EthmarksHeader extends HTMLElement {
+export default class EthmarksHeader extends HTMLElement {
   connectedCallback() {
+    const navItems = [
+      { name: "Home", href: "https://ethmarks.github.io/" },
+      { name: "About", href: "https://ethmarks.github.io/about/" },
+      { name: "Posts", href: "https://ethmarks.github.io/posts/" },
+      { name: "Blips", href: "https://ethmarks.github.io/blips/" },
+      { name: "Projects", href: "https://ethmarks.github.io/tags/projects/" },
+    ];
+
+    const activeLink = this.getAttribute("active");
+
     this.innerHTML = `
       <header>
           <a href="https://ethmarks.github.io/" id="title" tabindex="0" aria-label="Home">Ethan Marks</a>
           <nav>
-              <a id="nav-home" class="staggered" href="https://ethmarks.github.io/">Home</a>
-              <a id="nav-about" class="staggered" href="https://ethmarks.github.io/about/">About</a>
-              <a id="nav-posts" class="staggered" href="https://ethmarks.github.io/posts/">Posts</a>
-              <a id="nav-blips" class="staggered" href="https://ethmarks.github.io/blips/">Blips</a>
-              <a id="nav-projects" class="staggered" href="https://ethmarks.github.io/tags/projects/">Projects</a>
+              ${navItems
+                .map((item) => {
+                  const isActive =
+                    activeLink &&
+                    activeLink.toLowerCase() === item.name.toLowerCase();
+                  const activeClass = isActive
+                    ? "staggered active"
+                    : "staggered";
+                  return `<a id="nav-${item.name.toLowerCase()}" class="${activeClass}" href="${item.href}">${item.name}</a>`;
+                })
+                .join("")}
           </nav>
       </header>`;
-
-    const activeLink = this.getAttribute("active");
-    if (activeLink) {
-      const targetLink = this.querySelector("#nav-" + activeLink.toLowerCase());
-      if (targetLink) {
-        targetLink.classList.add("active");
-      }
-    }
   }
 }
