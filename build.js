@@ -48,19 +48,24 @@ await copyOut("fonts/Sen-latin-ext.woff2");
 
 import assert from "assert";
 
-function hardpoint(path) {
-  assert(existsSync(path), `Hardpoint asset "${path}" not present in output`);
+function hardpoint(inPath) {
+  assert(
+    existsSync(
+      path.join(OUT_DIR, inPath),
+      `Hardpoint asset "${inPath}" not present in output`,
+    ),
+  );
 }
 
-hardpoint("dist/props.css");
+hardpoint("props.css");
 
-hardpoint("fonts/Fira_Code.woff2");
-hardpoint("fonts/Kenia.woff2");
-hardpoint("fonts/Nunito-cyrillic.woff2");
-hardpoint("fonts/Nunito-cyrillic-italic.woff2");
-hardpoint("fonts/Nunito-latin.woff2");
-hardpoint("fonts/Nunito-latin-ext.woff2");
-hardpoint("fonts/Nunito-latin-ext-italic.woff2");
-hardpoint("fonts/Nunito-latin-italic.woff2");
-hardpoint("fonts/Sen-latin.woff2");
-hardpoint("fonts/Sen-latin-ext.woff2");
+hardpoint("Fira_Code.woff2");
+hardpoint("Kenia.woff2");
+hardpoint("Nunito-cyrillic.woff2");
+hardpoint("Nunito-cyrillic-italic.woff2");
+hardpoint("Nunito-latin.woff2");
+hardpoint("Nunito-latin-ext.woff2");
+hardpoint("Nunito-latin-ext-italic.woff2");
+hardpoint("Nunito-latin-italic.woff2");
+hardpoint("Sen-latin.woff2");
+hardpoint("Sen-latin-ext.woff2");
