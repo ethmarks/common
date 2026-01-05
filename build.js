@@ -7,6 +7,8 @@ await fs.mkdir(OUT_DIR, { recursive: true });
 // SCSS
 // ============================================================================
 
+// This section processes SCSS source into CSS stylesheets
+
 import { processSCSS } from "./scss.js";
 
 await processSCSS("scss/props");
