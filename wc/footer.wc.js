@@ -7,11 +7,11 @@ export default class EthmarksFooter extends HTMLElement {
     this.innerHTML = `
       <footer>
         <span id="source">
-            <a href="${sourceLink}" id="sourcelink" target="_blank">Website Source</a>
+            <a href="${sourceLink}" id="sourcelink">Website Source</a>
         </span>
         <span id="copyright"><a href="https://ethmarks.github.io/about/">Ethan Marks</a>, &copy;2026</span>
         <span id="email">
-            <a href="mailto:ethmarks.dev@gmail.com" target="_blank">Contact</a>
+            <a href="mailto:ethmarks.dev@gmail.com"">Contact</a>
         </span>
     </footer>`;
   }
