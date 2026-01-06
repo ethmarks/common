@@ -3,8 +3,9 @@
 
     let { source } = $props();
 
-    const sourceLink = () =>
-        source || "https://github.com/ethmarks/ethmarks.github.io";
+    const sourceLink = $derived(
+        source || "https://github.com/ethmarks/ethmarks.github.io",
+    );
 
     const currentYear = new Date().getFullYear();
 

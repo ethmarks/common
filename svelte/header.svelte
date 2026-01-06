@@ -1,7 +1,7 @@
 <script>
     let { active } = $props();
 
-    const activeLink = () => active;
+    const activeLink = $derived(active);
 
     const navItems = [
         { name: "Home", href: "https://ethmarks.github.io/" },
