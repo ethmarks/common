@@ -83,8 +83,9 @@ import assert from "assert";
 function hardpoint(inPath) {
   assert(
     existsSync(path.join(OUT_DIR, inPath)),
-    `Hardpoint asset "${inPath}" not present in output`,
+    `❌ Hardpoint asset "${inPath}" not present in output`,
   );
+  console.log(`✅ Hardpoint asset "${inPath}" is present in output`);
 }
 
 hardpoint("eth.wc.js");
