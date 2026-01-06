@@ -71,6 +71,9 @@ await copyOut("fonts/Sen-latin-ext.woff2");
 
 await copyOut("misc/ethmarks.ico");
 
+await copyOut("internal/favicon.ico");
+await copyOut("internal/index.html");
+
 // ============================================================================
 // Hardpoint Verification
 // ============================================================================
