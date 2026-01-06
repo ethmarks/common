@@ -21,9 +21,9 @@ async function copyOut(inFile) {
 //
 // This section bundles the .wc.js source into .js dist
 
-import { bundle } from "./rollup.js";
+import processWC from "./wc.js";
 
-await bundle({ inFile: "wc/eth.wc.js", format: "iife" });
+await processWC("wc/eth.wc.js");
 
 // ============================================================================
 // SCSS
