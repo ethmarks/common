@@ -69,7 +69,7 @@ await copyOut("fonts/Sen-latin-ext.woff2");
 //
 // This section handles one-off miscellaneous assets
 
-await copyOut("misc/favicon.ico");
+await copyOut("misc/ethmarks.ico");
 
 // ============================================================================
 // Hardpoint Verification
