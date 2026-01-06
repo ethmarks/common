@@ -27,10 +27,9 @@
         {#each navItems as item}
             <a
                 id="nav-{item.name.toLowerCase()}"
-                class="staggered ${activeLink &&
-                activeLink.toLowerCase() === item.name.toLowerCase()
-                    ? 'active'
-                    : ''}"
+                class="staggered"
+                class:active={activeLink &&
+                    activeLink.toLowerCase() === item.name.toLowerCase()}
                 href={item.href}
             >
                 {item.name}
