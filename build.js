@@ -21,11 +21,20 @@ async function copyOut(inFile) {
 //
 // This section bundles the .wc.js source into .js dist
 
-import { bundle } from "./rollup.js";
+import processWC from "./wc.js";
 
-await bundle("wc/eth.wc.js", "ethComponents");
+await processWC("wc/eth.wc.js");
 
-await processSCSS("scss/props");
+// ============================================================================
+// Svelte
+// ============================================================================
+//
+// This section compiles and bundles .svelte components
+
+import processSvelte from "./svelte.js";
+
+await processSvelte("svelte/header.svelte", "eth-header");
+await processSvelte("svelte/footer.svelte", "eth-footer");
 
 // ============================================================================
 // SCSS
@@ -73,14 +82,16 @@ import assert from "assert";
 
 function hardpoint(inPath) {
   assert(
-    existsSync(
-      path.join(OUT_DIR, inPath),
-      `Hardpoint asset "${inPath}" not present in output`,
-    ),
+    existsSync(path.join(OUT_DIR, inPath)),
+    `❌ Hardpoint asset "${inPath}" not present in output`,
   );
+  console.log(`✅ Hardpoint asset "${inPath}" is present in output`);
 }
 
 hardpoint("eth.wc.js");
+
+hardpoint("eth-header.sv.js");
+hardpoint("eth-footer.sv.js");
 
 hardpoint("props.css");
 

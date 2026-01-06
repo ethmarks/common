@@ -35,14 +35,14 @@ export default class EthmarksFooter extends HTMLElement {
     this.resizeHandler = () => {
       this.querySelector("footer").classList = getOverflowClass();
     };
-    window.visualViewport.addEventListener("resize", this.resizeHandler);
+    window.visualViewport?.addEventListener("resize", this.resizeHandler);
     this.resizeObserver = new ResizeObserver(this.resizeHandler);
     this.resizeObserver.observe(document.documentElement);
   }
 
   disconnectedCallback() {
     if (this.resizeHandler) {
-      window.visualViewport.removeEventListener("resize", this.resizeHandler);
+      window.visualViewport?.removeEventListener("resize", this.resizeHandler);
     }
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();

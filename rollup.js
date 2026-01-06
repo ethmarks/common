@@ -1,14 +1,36 @@
 import { rollup } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
+import svelte from "rollup-plugin-svelte";
 import * as fs from "fs/promises";
 import * as path from "path";
 import { getOutPath } from "./build.js";
 
-export async function bundle(inFile, name) {
+export default async function bundle({
+  inFile,
+  outFile = "",
+  format,
+  name = "",
+  useSvelte = false,
+}) {
+  const plugins = [resolve()];
+
+  if (useSvelte) {
+    plugins.unshift(
+      svelte({
+        emitCss: false,
+      }),
+    );
+  }
+
+  plugins.push(terser());
+
   const bundle = await rollup({
     input: inFile,
-    plugins: [resolve(), terser()],
+    plugins,
+    external: useSvelte
+      ? (id) => id === "svelte" || id.startsWith("svelte/")
+      : [],
     onwarn(warning, warn) {
       // Suppress node-resolve warnings about unused exports
       if (warning.code === "UNUSED_EXTERNAL_IMPORT") return;
@@ -18,8 +40,8 @@ export async function bundle(inFile, name) {
   });
 
   await bundle.write({
-    file: getOutPath(inFile),
-    format: "iife",
+    file: outFile || getOutPath(inFile),
+    format: format,
     name: name,
   });
 
