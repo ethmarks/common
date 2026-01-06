@@ -4,6 +4,8 @@ export default class EthmarksFooter extends HTMLElement {
       this.getAttribute("source") ||
       "https://github.com/ethmarks/ethmarks.github.io";
 
+    const currentYear = new Date().getFullYear();
+
     function getOverflowClass() {
       const contentHeight = Math.max(
         document.documentElement.scrollHeight,
@@ -25,7 +27,7 @@ export default class EthmarksFooter extends HTMLElement {
         <span id="source">
             <a href="${sourceLink}" id="sourcelink">Website Source</a>
         </span>
-        <span id="copyright"><a href="https://ethmarks.github.io/about/">Ethan Marks</a>, &copy;2026</span>
+        <span id="copyright"><a href="https://ethmarks.github.io/about/">Ethan Marks</a>, &copy;${currentYear}</span>
         <span id="email">
             <a href="mailto:ethmarks.dev@gmail.com">Contact</a>
         </span>
