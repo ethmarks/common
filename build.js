@@ -33,8 +33,8 @@ await processWC("wc/eth.wc.js");
 
 import processSvelte from "./svelte.js";
 
-await processSvelte("svelte/header.svelte");
-await processSvelte("svelte/footer.svelte");
+await processSvelte("svelte/header.svelte", "eth-header");
+await processSvelte("svelte/footer.svelte", "eth-footer");
 
 // ============================================================================
 // SCSS
