@@ -16,6 +16,18 @@ async function copyOut(inFile) {
 }
 
 // ============================================================================
+// Web Components
+// ============================================================================
+//
+// This section bundles the .wc.js source into .js dist
+
+import { bundle } from "./rollup.js";
+
+await bundle("wc/eth.wc.js", "ethComponents");
+
+await processSCSS("scss/props");
+
+// ============================================================================
 // SCSS
 // ============================================================================
 //
