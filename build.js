@@ -106,4 +106,4 @@ hardpoint("Nunito-latin-italic.woff2");
 hardpoint("Sen-latin.woff2");
 hardpoint("Sen-latin-ext.woff2");
 
-hardpoint("favicon.ico");
+hardpoint("ethmarks.ico");
