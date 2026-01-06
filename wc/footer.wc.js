@@ -7,14 +7,13 @@ export default class EthmarksFooter extends HTMLElement {
     const currentYear = new Date().getFullYear();
 
     function getOverflowClass() {
-      const contentHeight = Math.max(
-        document.documentElement.scrollHeight,
-        document.body.scrollHeight,
-      );
-      if (contentHeight === 0 || contentHeight < window.innerHeight) {
-        return "";
-      } else {
+      if (
+        document.documentElement.scrollHeight >
+        document.documentElement.clientHeight
+      ) {
         return "height-overflow";
+      } else {
+        return "";
       }
     }
 
@@ -33,14 +32,18 @@ export default class EthmarksFooter extends HTMLElement {
         </span>
     </footer>`;
 
-    this.resizeObserver = new ResizeObserver(() => {
+    this.resizeHandler = () => {
       this.querySelector("footer").classList = getOverflowClass();
-    });
-
-    this.resizeObserver.observe(document.body);
+    };
+    window.visualViewport.addEventListener("resize", this.resizeHandler);
+    this.resizeObserver = new ResizeObserver(this.resizeHandler);
+    this.resizeObserver.observe(document.documentElement);
   }
 
   disconnectedCallback() {
+    if (this.resizeHandler) {
+      window.visualViewport.removeEventListener("resize", this.resizeHandler);
+    }
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
