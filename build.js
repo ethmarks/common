@@ -5,11 +5,14 @@ import * as path from "path";
 export const OUT_DIR = "dist/";
 fs.mkdir(OUT_DIR, { recursive: true });
 
-async function copyOut(inFile) {
+export function getOutPath(inFile) {
   const pathParts = inFile.split(path.sep);
   pathParts[0] = OUT_DIR;
-  const outFile = pathParts.join(path.sep).replace(/\.scss$/, ".css");
-  await fs.copyFile(inFile, outFile);
+  return pathParts.join(path.sep);
+}
+
+async function copyOut(inFile) {
+  await fs.copyFile(inFile, getOutPath(inFile));
 }
 
 // ============================================================================
