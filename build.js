@@ -5,12 +5,27 @@ import * as path from "path";
 export const OUT_DIR = "dist/";
 fs.mkdir(OUT_DIR, { recursive: true });
 
-async function copyOut(inFile) {
+export function getOutPath(inFile) {
   const pathParts = inFile.split(path.sep);
   pathParts[0] = OUT_DIR;
-  const outFile = pathParts.join(path.sep).replace(/\.scss$/, ".css");
-  await fs.copyFile(inFile, outFile);
+  return pathParts.join(path.sep);
 }
+
+async function copyOut(inFile) {
+  await fs.copyFile(inFile, getOutPath(inFile));
+}
+
+// ============================================================================
+// Web Components
+// ============================================================================
+//
+// This section bundles the .wc.js source into .js dist
+
+import { bundle } from "./rollup.js";
+
+await bundle("wc/eth.wc.js", "ethComponents");
+
+await processSCSS("scss/props");
 
 // ============================================================================
 // SCSS
@@ -40,6 +55,14 @@ await copyOut("fonts/Sen-latin.woff2");
 await copyOut("fonts/Sen-latin-ext.woff2");
 
 // ============================================================================
+// Misc
+// ============================================================================
+//
+// This section handles one-off miscellaneous assets
+
+await copyOut("misc/favicon.ico");
+
+// ============================================================================
 // Hardpoint Verification
 // ============================================================================
 //
@@ -48,19 +71,28 @@ await copyOut("fonts/Sen-latin-ext.woff2");
 
 import assert from "assert";
 
-function hardpoint(path) {
-  assert(existsSync(path), `Hardpoint asset "${path}" not present in output`);
+function hardpoint(inPath) {
+  assert(
+    existsSync(
+      path.join(OUT_DIR, inPath),
+      `Hardpoint asset "${inPath}" not present in output`,
+    ),
+  );
 }
 
-hardpoint("dist/props.css");
+hardpoint("eth.wc.js");
 
-hardpoint("fonts/Fira_Code.woff2");
-hardpoint("fonts/Kenia.woff2");
-hardpoint("fonts/Nunito-cyrillic.woff2");
-hardpoint("fonts/Nunito-cyrillic-italic.woff2");
-hardpoint("fonts/Nunito-latin.woff2");
-hardpoint("fonts/Nunito-latin-ext.woff2");
-hardpoint("fonts/Nunito-latin-ext-italic.woff2");
-hardpoint("fonts/Nunito-latin-italic.woff2");
-hardpoint("fonts/Sen-latin.woff2");
-hardpoint("fonts/Sen-latin-ext.woff2");
+hardpoint("props.css");
+
+hardpoint("Fira_Code.woff2");
+hardpoint("Kenia.woff2");
+hardpoint("Nunito-cyrillic.woff2");
+hardpoint("Nunito-cyrillic-italic.woff2");
+hardpoint("Nunito-latin.woff2");
+hardpoint("Nunito-latin-ext.woff2");
+hardpoint("Nunito-latin-ext-italic.woff2");
+hardpoint("Nunito-latin-italic.woff2");
+hardpoint("Sen-latin.woff2");
+hardpoint("Sen-latin-ext.woff2");
+
+hardpoint("favicon.ico");
