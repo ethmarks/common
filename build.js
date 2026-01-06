@@ -79,7 +79,6 @@ await copyOut("misc/favicon.ico");
 // output, and fails if any are not present
 
 import assert from "assert";
-import { format } from "path/win32";
 
 function hardpoint(inPath) {
   assert(
