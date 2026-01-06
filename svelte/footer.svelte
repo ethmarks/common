@@ -26,12 +26,12 @@
         updateOverflow();
 
         const resizeHandler = updateOverflow;
-        window.visualViewport.addEventListener("resize", resizeHandler);
+        window.visualViewport?.addEventListener("resize", resizeHandler);
         const resizeObserver = new ResizeObserver(resizeHandler);
         resizeObserver.observe(document.documentElement);
 
         return () => {
-            window.visualViewport.removeEventListener("resize", resizeHandler);
+            window.visualViewport?.removeEventListener("resize", resizeHandler);
             resizeObserver.disconnect();
         };
     });
