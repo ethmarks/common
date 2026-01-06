@@ -80,6 +80,8 @@ function hardpoint(inPath) {
   );
 }
 
+hardpoint("eth.wc.js");
+
 hardpoint("props.css");
 
 hardpoint("Fira_Code.woff2");
