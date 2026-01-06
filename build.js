@@ -89,6 +89,9 @@ function hardpoint(inPath) {
 
 hardpoint("eth.wc.js");
 
+hardpoint("eth-header.sv.js");
+hardpoint("eth-footer.sv.js");
+
 hardpoint("props.css");
 
 hardpoint("Fira_Code.woff2");
