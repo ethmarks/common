@@ -4,15 +4,43 @@ export default class EthmarksFooter extends HTMLElement {
       this.getAttribute("source") ||
       "https://github.com/ethmarks/ethmarks.github.io";
 
+    function getOverflowClass() {
+      const contentHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+      );
+      if (contentHeight === 0 || contentHeight < window.innerHeight) {
+        return "";
+      } else {
+        return "height-overflow";
+      }
+    }
+
     this.innerHTML = `
-      <footer>
+      <style>
+        footer { position: fixed; }
+        footer.height-overflow { position: static; }
+      </style>
+    <footer class="${getOverflowClass()}">
         <span id="source">
             <a href="${sourceLink}" id="sourcelink">Website Source</a>
         </span>
         <span id="copyright"><a href="https://ethmarks.github.io/about/">Ethan Marks</a>, &copy;2026</span>
         <span id="email">
-            <a href="mailto:ethmarks.dev@gmail.com"">Contact</a>
+            <a href="mailto:ethmarks.dev@gmail.com">Contact</a>
         </span>
     </footer>`;
+
+    this.resizeHandler = () => {
+      this.querySelector("footer").classList = getOverflowClass();
+    };
+
+    window.visualViewport.addEventListener("resize", this.resizeHandler);
+  }
+
+  disconnectedCallback() {
+    if (this.resizeHandler) {
+      window.visualViewport.removeEventListener("resize", this.resizeHandler);
+    }
   }
 }
