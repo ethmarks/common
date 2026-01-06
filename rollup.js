@@ -16,7 +16,11 @@ export default async function bundle({
   const plugins = [resolve()];
 
   if (useSvelte) {
-    plugins.unshift(svelte());
+    plugins.unshift(
+      svelte({
+        emitCss: false,
+      }),
+    );
   }
 
   plugins.push(terser());
