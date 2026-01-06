@@ -26,6 +26,17 @@ import processWC from "./wc.js";
 await processWC("wc/eth.wc.js");
 
 // ============================================================================
+// Svelte
+// ============================================================================
+//
+// This section compiles and bundles .svelte components
+
+import processSvelte from "./svelte.js";
+
+await processSvelte("svelte/header.svelte");
+await processSvelte("svelte/footer.svelte");
+
+// ============================================================================
 // SCSS
 // ============================================================================
 //
