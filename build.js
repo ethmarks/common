@@ -23,9 +23,7 @@ async function copyOut(inFile) {
 
 import { bundle } from "./rollup.js";
 
-await bundle("wc/eth.wc.js", "ethComponents");
-
-await processSCSS("scss/props");
+await bundle({ inFile: "wc/eth.wc.js", format: "iife" });
 
 // ============================================================================
 // SCSS
@@ -70,6 +68,7 @@ await copyOut("misc/favicon.ico");
 // output, and fails if any are not present
 
 import assert from "assert";
+import { format } from "path/win32";
 
 function hardpoint(inPath) {
   assert(

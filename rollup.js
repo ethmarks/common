@@ -5,7 +5,7 @@ import * as fs from "fs/promises";
 import * as path from "path";
 import { getOutPath } from "./build.js";
 
-export async function bundle(inFile, name) {
+export async function bundle({ inFile, outFile = "", format, name = "" }) {
   const bundle = await rollup({
     input: inFile,
     plugins: [resolve(), terser()],
@@ -18,8 +18,8 @@ export async function bundle(inFile, name) {
   });
 
   await bundle.write({
-    file: getOutPath(inFile),
-    format: "iife",
+    file: outFile || getOutPath(inFile),
+    format: format,
     name: name,
   });
 
