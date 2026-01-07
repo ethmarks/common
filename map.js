@@ -34,7 +34,7 @@ ${assets.map((file) => `    <li><a href="${file}">${file}</a></li>`).join("\n")}
 
   // Write the index.html file
   await fs.writeFile(OUTPUT_FILE, html, "utf-8");
-  console.log(`✅ Generated index.html with ${assets.length} assets`);
+  console.log(`✔️ Generated index.html with ${assets.length} assets`);
 }
 
 export default generateMap;

@@ -90,7 +90,7 @@ function hardpoint(inPath) {
     existsSync(path.join(OUT_DIR, inPath)),
     `❌ Hardpoint asset "${inPath}" not present in output`,
   );
-  console.log(`✅ Hardpoint asset "${inPath}" is present in output`);
+  console.log(`✔️ Hardpoint asset "${inPath}" is present in output`);
 }
 
 hardpoint("ethmarks.wc.js");
@@ -112,3 +112,5 @@ hardpoint("Sen-latin.woff2");
 hardpoint("Sen-latin-ext.woff2");
 
 hardpoint("ethmarks.ico");
+
+console.log(`✅ All Hardpoint assets present in output`);
