@@ -45,6 +45,7 @@ await processSvelte("svelte/footer.svelte", "eth-footer");
 import { processSCSS } from "./scss.js";
 
 await processSCSS("scss/props");
+await processSCSS("scss/layout");
 await processSCSS("scss/fonts");
 await processSCSS("scss/media");
 await processSCSS("scss/blockquote");
@@ -102,6 +103,7 @@ hardpoint("eth-header.sv.js");
 hardpoint("eth-footer.sv.js");
 
 hardpoint("props.css");
+hardpoint("layout.css");
 hardpoint("fonts.css");
 hardpoint("media.css");
 hardpoint("blockquote.css");
