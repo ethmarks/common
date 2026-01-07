@@ -50,6 +50,7 @@ await processSCSS("scss/text");
 await processSCSS("scss/fonts");
 await processSCSS("scss/media");
 await processSCSS("scss/header");
+await processSCSS("scss/footer");
 await processSCSS("scss/blockquote");
 
 // ============================================================================
@@ -110,6 +111,7 @@ hardpoint("text.css");
 hardpoint("fonts.css");
 hardpoint("media.css");
 hardpoint("header.css");
+hardpoint("footer.css");
 hardpoint("blockquote.css");
 
 hardpoint("Fira_Code.woff2");
