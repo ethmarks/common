@@ -46,6 +46,7 @@ import { processSCSS } from "./scss.js";
 
 await processSCSS("scss/props");
 await processSCSS("scss/fonts");
+await processSCSS("scss/media");
 
 // ============================================================================
 // Fonts
@@ -101,6 +102,7 @@ hardpoint("eth-footer.sv.js");
 
 hardpoint("props.css");
 hardpoint("fonts.css");
+hardpoint("media.css");
 
 hardpoint("Fira_Code.woff2");
 hardpoint("Kenia.woff2");
