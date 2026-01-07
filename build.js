@@ -45,6 +45,7 @@ await processSvelte("svelte/footer.svelte", "eth-footer");
 import { processSCSS } from "./scss.js";
 
 await processSCSS("scss/props");
+await processSCSS("scss/fonts");
 
 // ============================================================================
 // Fonts
@@ -99,6 +100,7 @@ hardpoint("eth-header.sv.js");
 hardpoint("eth-footer.sv.js");
 
 hardpoint("props.css");
+hardpoint("fonts.css");
 
 hardpoint("Fira_Code.woff2");
 hardpoint("Kenia.woff2");
