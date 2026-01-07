@@ -46,6 +46,7 @@ import { processSCSS } from "./scss.js";
 
 await processSCSS("scss/props");
 await processSCSS("scss/layout");
+await processSCSS("scss/text");
 await processSCSS("scss/fonts");
 await processSCSS("scss/media");
 await processSCSS("scss/blockquote");
@@ -104,6 +105,7 @@ hardpoint("eth-footer.sv.js");
 
 hardpoint("props.css");
 hardpoint("layout.css");
+hardpoint("text.css");
 hardpoint("fonts.css");
 hardpoint("media.css");
 hardpoint("blockquote.css");
