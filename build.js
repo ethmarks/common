@@ -23,7 +23,7 @@ async function copyOut(inFile) {
 
 import processWC from "./wc.js";
 
-await processWC("wc/eth.wc.js");
+await processWC("wc/ethmarks.wc.js");
 
 // ============================================================================
 // Svelte
@@ -93,7 +93,7 @@ function hardpoint(inPath) {
   console.log(`✅ Hardpoint asset "${inPath}" is present in output`);
 }
 
-hardpoint("eth.wc.js");
+hardpoint("ethmarks.wc.js");
 
 hardpoint("eth-header.sv.js");
 hardpoint("eth-footer.sv.js");
