@@ -2,8 +2,6 @@ import { rollup } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import svelte from "rollup-plugin-svelte";
-import * as fs from "fs/promises";
-import * as path from "path";
 import { getOutPath } from "./build.js";
 
 export default async function bundle({
