@@ -53,6 +53,7 @@ await processSCSS("scss/header");
 await processSCSS("scss/footer");
 await processSCSS("scss/blockquote");
 
+await processSCSS("scss/ethmarks-props");
 await processSCSS("scss/ethmarks-wc");
 
 // ============================================================================
@@ -107,6 +108,7 @@ hardpoint("ethmarks.wc.js");
 hardpoint("eth-header.sv.js");
 hardpoint("eth-footer.sv.js");
 
+hardpoint("ethmarks-props.css");
 hardpoint("ethmarks-wc.css");
 
 hardpoint("Fira_Code.woff2");
