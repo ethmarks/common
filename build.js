@@ -54,6 +54,7 @@ await processSCSS("scss/footer");
 await processSCSS("scss/blockquote");
 await processSCSS("scss/table");
 
+await processSCSS("scss/ethmarks");
 await processSCSS("scss/ethmarks-props");
 await processSCSS("scss/ethmarks-wc");
 
@@ -109,6 +110,7 @@ hardpoint("ethmarks.wc.js");
 hardpoint("eth-header.sv.js");
 hardpoint("eth-footer.sv.js");
 
+hardpoint("ethmarks.css");
 hardpoint("ethmarks-props.css");
 hardpoint("ethmarks-wc.css");
 
