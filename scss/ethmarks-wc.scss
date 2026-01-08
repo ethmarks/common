@@ -1,5 +1,7 @@
+// This entry stylesheet provides the styles for the <eth-header> and <eth-footer> components
+
 @forward "fonts.scss";
 @forward "props.scss";
+@forward "staggered.scss";
 @forward "header.scss";
 @forward "footer.scss";
-@forward "staggered.scss";
