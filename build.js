@@ -53,6 +53,8 @@ await processSCSS("scss/header");
 await processSCSS("scss/footer");
 await processSCSS("scss/blockquote");
 
+await processSCSS("scss/ethmarks-wc");
+
 // ============================================================================
 // Fonts
 // ============================================================================
@@ -105,14 +107,7 @@ hardpoint("ethmarks.wc.js");
 hardpoint("eth-header.sv.js");
 hardpoint("eth-footer.sv.js");
 
-hardpoint("props.css");
-hardpoint("layout.css");
-hardpoint("text.css");
-hardpoint("fonts.css");
-hardpoint("media.css");
-hardpoint("header.css");
-hardpoint("footer.css");
-hardpoint("blockquote.css");
+hardpoint("ethmarks-wc.css");
 
 hardpoint("Fira_Code.woff2");
 hardpoint("Kenia.woff2");
