@@ -1,3 +1,5 @@
+// needs props.scss and staggered.scss
+
 header {
     position: fixed;
     top: 20px;
@@ -157,14 +159,6 @@ header {
                 -webkit-text-fill-color: initial;
                 animation: none;
             }
-        }
-    }
-
-    &.birthday-mode-delayed {
-        transition: box-shadow 0.4s ease-out;
-
-        & #title::after {
-            animation: fade-in-up 0.4s ease-in-out forwards !important;
         }
     }
 }
