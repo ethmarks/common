@@ -1,4 +1,6 @@
-// needs props.scss and staggered.scss
+@use "props.scss";
+@use "staggered.scss";
+@use "keyframes.scss";
 
 header {
     position: fixed;

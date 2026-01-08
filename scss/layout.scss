@@ -1,4 +1,5 @@
-// needs props.scss
+@use "props.scss";
+@use "keyframes.scss";
 
 html {
     font-size: 100%;
