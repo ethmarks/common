@@ -19,6 +19,7 @@ async function generateMap() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ethmarks/common</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@intergrav/dev.css@4" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <h1>ethmarks/common</h1>
