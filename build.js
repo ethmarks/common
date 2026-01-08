@@ -52,6 +52,7 @@ await processSCSS("scss/media");
 await processSCSS("scss/header");
 await processSCSS("scss/footer");
 await processSCSS("scss/blockquote");
+await processSCSS("scss/table");
 
 await processSCSS("scss/ethmarks-props");
 await processSCSS("scss/ethmarks-wc");
