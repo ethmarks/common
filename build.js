@@ -77,6 +77,7 @@ await processSCSS("scss/table");
 await processSCSS("scss/ethmarks");
 await processSCSS("scss/ethmarks-props");
 await processSCSS("scss/ethmarks-wc");
+await processSCSS("scss/ethmarks-rich");
 
 // ============================================================================
 // Fonts
@@ -132,6 +133,7 @@ hardpoint("footer.wc.html");
 hardpoint("ethmarks.css");
 hardpoint("ethmarks-props.css");
 hardpoint("ethmarks-wc.css");
+hardpoint("ethmarks-rich.css");
 
 hardpoint("Fira_Code.woff2");
 hardpoint("Kenia.woff2");
