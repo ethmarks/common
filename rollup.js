@@ -1,7 +1,6 @@
 import { rollup } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
-import svelte from "rollup-plugin-svelte";
 import { getOutPath } from "./build.js";
 
 export default async function bundle({
@@ -9,26 +8,14 @@ export default async function bundle({
   outFile = "",
   format,
   name = "",
-  useSvelte = false,
 }) {
   const plugins = [resolve()];
-
-  if (useSvelte) {
-    plugins.unshift(
-      svelte({
-        emitCss: false,
-      }),
-    );
-  }
 
   plugins.push(terser());
 
   const bundle = await rollup({
     input: inFile,
     plugins,
-    external: useSvelte
-      ? (id) => id === "svelte" || id.startsWith("svelte/")
-      : [],
     onwarn(warning, warn) {
       // Suppress node-resolve warnings about unused exports
       if (warning.code === "UNUSED_EXTERNAL_IMPORT") return;
