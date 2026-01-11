@@ -20,11 +20,41 @@ async function copyOut(inFile) {
 // Web Components
 // ============================================================================
 //
-// This section bundles the .wc.js source into .js dist
+// This section bundles to .wc.js and renders to .wc.html
 
 import processWC from "./wc.js";
+import processStaticWC from "./wc-fallback.js";
 
 await processWC("wc/ethmarks.wc.js");
+
+await processStaticWC("wc/header.wc.js");
+await processStaticWC(
+  "wc/header.wc.js",
+  { active: "home" },
+  "dist/header-home.wc.html",
+);
+await processStaticWC(
+  "wc/header.wc.js",
+  { active: "about" },
+  "dist/header-about.wc.html",
+);
+await processStaticWC(
+  "wc/header.wc.js",
+  { active: "blips" },
+  "dist/header-blips.wc.html",
+);
+await processStaticWC(
+  "wc/header.wc.js",
+  { active: "posts" },
+  "dist/header-posts.wc.html",
+);
+await processStaticWC(
+  "wc/header.wc.js",
+  { active: "projects" },
+  "dist/header-projects.wc.html",
+);
+
+await processStaticWC("wc/footer.wc.js");
 
 // ============================================================================
 // SCSS
@@ -96,6 +126,8 @@ function hardpoint(inPath) {
 }
 
 hardpoint("ethmarks.wc.js");
+hardpoint("header.wc.html");
+hardpoint("footer.wc.html");
 
 hardpoint("ethmarks.css");
 hardpoint("ethmarks-props.css");
