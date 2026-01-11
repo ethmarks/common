@@ -27,17 +27,6 @@ import processWC from "./wc.js";
 await processWC("wc/ethmarks.wc.js");
 
 // ============================================================================
-// Svelte
-// ============================================================================
-//
-// This section compiles and bundles .svelte components
-
-import processSvelte from "./svelte.js";
-
-await processSvelte("svelte/header.svelte", "eth-header");
-await processSvelte("svelte/footer.svelte", "eth-footer");
-
-// ============================================================================
 // SCSS
 // ============================================================================
 //
@@ -107,9 +96,6 @@ function hardpoint(inPath) {
 }
 
 hardpoint("ethmarks.wc.js");
-
-hardpoint("eth-header.sv.js");
-hardpoint("eth-footer.sv.js");
 
 hardpoint("ethmarks.css");
 hardpoint("ethmarks-props.css");
