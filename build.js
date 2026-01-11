@@ -3,6 +3,7 @@ import { existsSync } from "fs";
 import * as path from "path";
 
 export const OUT_DIR = "dist/";
+fs.rm(OUT_DIR, { recursive: true, force: true });
 fs.mkdir(OUT_DIR, { recursive: true });
 
 export function getOutPath(inFile) {
