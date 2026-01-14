@@ -45,6 +45,10 @@ export default async function processStaticWC(
   const html = element.innerHTML;
   document.body.removeChild(container);
 
+  if (!html) {
+    throw new Error(`encountered error while processing ${inFile}!`);
+  }
+
   const fileName = outFile || getOutPath(inFile).replace(/\.js$/, ".html");
   await fs.writeFile(fileName, html, "utf-8");
 }
