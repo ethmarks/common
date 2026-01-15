@@ -96,6 +96,9 @@ await copyOut("fonts/Nunito-latin-italic.woff2");
 await copyOut("fonts/Sen-latin.woff2");
 await copyOut("fonts/Sen-latin-ext.woff2");
 
+// this is HTML snippet preloads fonts to reduce page load times
+await copyOut("fonts/fonts.html");
+
 // ============================================================================
 // Misc
 // ============================================================================
@@ -145,6 +148,7 @@ hardpoint("Nunito-latin-ext-italic.woff2");
 hardpoint("Nunito-latin-italic.woff2");
 hardpoint("Sen-latin.woff2");
 hardpoint("Sen-latin-ext.woff2");
+hardpoint("fonts.html");
 
 hardpoint("ethmarks.ico");
 
