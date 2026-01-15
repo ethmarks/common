@@ -22,6 +22,10 @@ body {
     overflow-wrap: break-word;
     background-attachment: fixed;
 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
     &.height-overflow {
         background-attachment: scroll;
     }
@@ -34,6 +38,8 @@ main {
     display: flex;
     flex-direction: column;
     padding: 0;
+
+    flex: 1;
 }
 
 main > article {
