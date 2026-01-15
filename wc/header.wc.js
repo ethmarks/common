@@ -1,5 +1,20 @@
 export default class EthmarksHeader extends HTMLElement {
   connectedCallback() {
+    const hydrate = this.hasAttribute("hydrate");
+    const activeLink = this.getAttribute("active");
+
+    const today = new Date();
+    const isBirthday = today.getMonth() === 8 && today.getDate() === 13; // September 13
+    const bDayClass = isBirthday ? "birthday-mode" : "";
+
+    const existingHeader = this.querySelector(":scope > header");
+
+    // if there's already a <header> child, we shouldn't destructively hydrate
+    if (existingHeader && !hydrate) {
+      existingHeader.classList.add(bDayClass);
+      return;
+    }
+
     const navItems = [
       { name: "Home", href: "https://ethmarks.github.io/" },
       { name: "About", href: "https://ethmarks.github.io/about/" },
@@ -8,14 +23,8 @@ export default class EthmarksHeader extends HTMLElement {
       { name: "Projects", href: "https://ethmarks.github.io/tags/projects/" },
     ];
 
-    const activeLink = this.getAttribute("active");
-
-    const today = new Date();
-    const isBirthday = today.getMonth() === 8 && today.getDate() === 13; // September 13
-    const birthdayClass = isBirthday ? "birthday-mode" : "";
-
     this.innerHTML = `
-      <header class="${birthdayClass}">
+      <header class="${bDayClass}">
           <a href="https://ethmarks.github.io/" id="title" tabindex="0" aria-label="Home">Ethan Marks</a>
           <nav>
               ${navItems
