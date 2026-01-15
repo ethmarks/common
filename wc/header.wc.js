@@ -11,7 +11,9 @@ export default class EthmarksHeader extends HTMLElement {
 
     // if there's already a <header> child, we shouldn't destructively hydrate
     if (existingHeader && !hydrate) {
-      existingHeader.classList.add(bDayClass);
+      if (bDayClass) {
+        existingHeader.classList.add(bDayClass);
+      }
       return;
     }
 
