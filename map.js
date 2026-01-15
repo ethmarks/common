@@ -27,7 +27,7 @@ async function generateMap() {
   <p>View the source at <a href="https://github.com/ethmarks/common">ethmarks/common</a> on GitHub</p>
   <p><strong>Total Assets:</strong> ${assets.length} files</p>
   <ul>
-${assets.map((file) => `    <li><a href="${file}">${file}</a></li>`).join("\n")}
+${assets.map((file) => `    <li><a href="./${file}">${file}</a></li>`).join("\n")}
   </ul>
 </body>
 </html>
