@@ -20,15 +20,11 @@ body {
     margin: 0;
     font-size: var(--font-size-base);
     overflow-wrap: break-word;
-    background-attachment: fixed;
 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-    &.height-overflow {
-        background-attachment: scroll;
-    }
+    background-attachment: scroll;
 }
 
 main {
