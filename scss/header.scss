@@ -81,7 +81,7 @@ header {
             outline-offset: 2px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             display: none;
         }
     }
@@ -91,7 +91,7 @@ header {
         gap: 8px;
         flex-shrink: 0;
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             justify-content: space-evenly;
             width: 100%;
             gap: 0px;
