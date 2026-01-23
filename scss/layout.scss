@@ -14,17 +14,20 @@ html {
 
 body {
     background: var(--body-bg-gradient);
+    background-attachment: scroll;
     line-height: 1.4;
     font-family: var(--font-primary);
     color: var(--color-text);
     margin: 0;
     font-size: var(--font-size-base);
     overflow-wrap: break-word;
+}
 
+body,
+#__nuxt {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-attachment: scroll;
 }
 
 main {
