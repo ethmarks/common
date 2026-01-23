@@ -41,24 +41,9 @@ footer {
             }
         }
 
-        &#copyright {
-            z-index: 4;
-            margin: auto;
-
-            @media (min-width: 768px) {
-                position: absolute;
-                left: 0;
-                right: 0;
-                text-align: center;
-            }
-        }
-
         &#source,
         &#email {
             z-index: 5;
-            @media (max-width: 768px) {
-                display: none;
-            }
         }
     }
 }

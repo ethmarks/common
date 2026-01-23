@@ -20,7 +20,6 @@ export default class EthmarksFooter extends HTMLElement {
         <span id="source">
             <a href="${source}" id="sourcelink">Website Source</a>
         </span>
-        <span id="copyright"><a href="https://ethmarks.github.io/about/">Ethan Marks</a>, &copy;${currentYear}</span>
         <span id="email">
             <a href="mailto:ethmarks.dev@gmail.com">Contact</a>
         </span>
