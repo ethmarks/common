@@ -201,12 +201,11 @@
 
     --article-margin-vertical: clamp(1rem, 4vw, 1.875rem);
 
-    --main-width: 100vw;
-    --main-width-mobile: 98vw;
+    --main-width: 850px;
+    --main-padding: 0.2em;
     --main-margin-top: 5rem;
     --main-margin-top-mobile: 3.5rem;
-    --main-margin-sides: 12vw;
-    --main-margin-sides-mobile: auto;
+    --main-margin-sides: auto;
 
     // =========================================================================
     // FOOTER
@@ -228,10 +227,6 @@
     // =========================================================================
 
     @media (max-width: 768px) {
-        --media-width: var(--media-width-mobile);
-
-        --main-margin-sides: var(--main-margin-sides-mobile);
         --main-margin-top: var(--main-margin-top-mobile);
-        --main-width: var(--main-width-mobile);
     }
 }
