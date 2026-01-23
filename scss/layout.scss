@@ -28,6 +28,7 @@ body {
 }
 
 main {
+    width: 100%;
     max-width: var(--main-width);
     margin: var(--main-margin-top) var(--main-margin-sides) 0;
     box-sizing: border-box;
