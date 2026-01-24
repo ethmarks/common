@@ -1,17 +1,12 @@
 import * as fs from "fs/promises";
 import * as path from "path";
+import { BASE_PATH } from "./build.js";
 
-const DIST_DIR = "dist/";
-const OUTPUT_FILE = path.join(DIST_DIR, "index.html");
-
-async function generateMap() {
-  // Read all files in the dist directory
-  const files = await fs.readdir(DIST_DIR);
-
-  // Filter out the index.html itself and sort the files
+export default async function generateMap(out_dir) {
+  const output_file = path.join(out_dir, "index.html");
+  const files = await fs.readdir(out_dir);
   const assets = files.filter((file) => file !== "index.html").sort();
 
-  // Generate HTML
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,15 +22,12 @@ async function generateMap() {
   <p>View the source at <a href="https://github.com/ethmarks/common">ethmarks/common</a> on GitHub</p>
   <p><strong>Total Assets:</strong> ${assets.length} files</p>
   <ul>
-${assets.map((file) => `    <li><a href="./${file}">${file}</a></li>`).join("\n")}
+${assets.map((file) => `    <li><a href="/${BASE_PATH}${file}">${file}</a></li>`).join("\n")}
   </ul>
 </body>
 </html>
 `;
 
-  // Write the index.html file
-  await fs.writeFile(OUTPUT_FILE, html, "utf-8");
+  await fs.writeFile(output_file, html, "utf-8");
   console.log(`✔️ Generated index.html with ${assets.length} assets`);
 }
-
-export default generateMap;

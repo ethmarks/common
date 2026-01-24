@@ -2,7 +2,9 @@ import * as fs from "fs/promises";
 import { existsSync } from "fs";
 import * as path from "path";
 
-export const OUT_DIR = "dist/";
+export const BASE_PATH = process.env.BASE_PATH || ""; // "common/"
+export const OUT_DIR = "dist/" + BASE_PATH; // "dist/common/"
+
 fs.rm(OUT_DIR, { recursive: true, force: true });
 fs.mkdir(OUT_DIR, { recursive: true });
 
@@ -31,27 +33,27 @@ await processStaticWC("wc/header.wc.js");
 await processStaticWC(
   "wc/header.wc.js",
   { active: "home" },
-  "dist/header-home.wc.html",
+  `${OUT_DIR}header-home.wc.html`,
 );
 await processStaticWC(
   "wc/header.wc.js",
   { active: "about" },
-  "dist/header-about.wc.html",
+  `${OUT_DIR}header-about.wc.html`,
 );
 await processStaticWC(
   "wc/header.wc.js",
   { active: "blips" },
-  "dist/header-blips.wc.html",
+  `${OUT_DIR}header-blips.wc.html`,
 );
 await processStaticWC(
   "wc/header.wc.js",
   { active: "posts" },
-  "dist/header-posts.wc.html",
+  `${OUT_DIR}header-posts.wc.html`,
 );
 await processStaticWC(
   "wc/header.wc.js",
   { active: "projects" },
-  "dist/header-projects.wc.html",
+  `${OUT_DIR}header-projects.wc.html`,
 );
 
 await processStaticWC("wc/footer.wc.js");
@@ -110,7 +112,7 @@ await copyOut("misc/ethmarks.ico");
 await copyOut("internal/favicon.ico");
 
 import generateMap from "./map.js";
-await generateMap();
+await generateMap(OUT_DIR);
 
 // ============================================================================
 // Hardpoint Verification
