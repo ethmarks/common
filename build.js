@@ -82,6 +82,16 @@ await processSCSS("scss/ethmarks-wc");
 await processSCSS("scss/ethmarks-rich");
 
 // ============================================================================
+// Scripts
+// ============================================================================
+//
+// This section bundles .js scripts
+
+import processScript from "./script.js";
+
+await processScript("scripts/overflow.js");
+
+// ============================================================================
 // Fonts
 // ============================================================================
 //
@@ -139,6 +149,8 @@ hardpoint("ethmarks.css");
 hardpoint("ethmarks-props.css");
 hardpoint("ethmarks-wc.css");
 hardpoint("ethmarks-rich.css");
+
+hardpoint("overflow.js");
 
 hardpoint("Fira_Code.woff2");
 hardpoint("Kenia.woff2");
