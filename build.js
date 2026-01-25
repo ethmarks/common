@@ -1,5 +1,5 @@
 import * as fs from "fs/promises";
-import { existsSync } from "fs";
+import { existsSync, statSync } from "fs";
 import * as path from "path";
 
 export const BASE_PATH = process.env.BASE_PATH || ""; // "common/"
@@ -133,12 +133,14 @@ await generateMap(OUT_DIR);
 
 import assert from "assert";
 
-function hardpoint(inPath) {
+function hardpoint(inFile) {
+  const file = path.join(OUT_DIR, inFile);
   assert(
-    existsSync(path.join(OUT_DIR, inPath)),
-    `❌ Hardpoint asset "${inPath}" not present in output`,
+    existsSync(file),
+    `❌ Hardpoint asset "${inFile}" not present in output`,
   );
-  console.log(`✔️ Hardpoint asset "${inPath}" is present in output`);
+  assert(statSync(file).size > 0, `❌ Hardpoint asset "${inFile}" is empty`);
+  console.log(`✔️ Hardpoint asset "${inFile}" passes verification`);
 }
 
 hardpoint("ethmarks.wc.js");
@@ -166,4 +168,4 @@ hardpoint("fonts.html");
 
 hardpoint("ethmarks.ico");
 
-console.log(`✅ All Hardpoint assets present in output`);
+console.log(`✅ All Hardpoint assets verified`);
