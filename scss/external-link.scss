@@ -33,7 +33,8 @@
             color 0.3s ease;
 
         &.animated {
-            animation: slideInFromLeft 0.5s 0.4s var(--transition-timing) both;
+            animation: slideInFromLeft 0.5s 0.4s var(--transition-timing)
+                forwards;
         }
 
         &::after {

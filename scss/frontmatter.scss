@@ -25,10 +25,10 @@
         color: var(--color-accent);
 
         &.animated {
-            animation: slideInFromLeft 0.8s var(--transition-timing) both;
+            animation: slideInFromLeft 0.8s var(--transition-timing) forwards;
             @media (max-width: 768px) {
                 animation: slideInFromLeft 0.5s 0.2s var(--transition-timing)
-                    both;
+                    forwards;
             }
         }
 
