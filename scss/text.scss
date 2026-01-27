@@ -42,7 +42,7 @@ h1 {
     }
 
     &.animated {
-        animation: slideInFromLeft 0.5s 0.1s var(--transition-timing) forwards;
+        animation: slideInFromLeft 0.5s 0.1s var(--transition-timing) both;
     }
 }
 
