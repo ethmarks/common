@@ -22,4 +22,30 @@ if (document.readyState === "loading") {
 } else {
   updateOverflowClasses();
 }
-window.addEventListener("resize", updateOverflowClasses);
+
+let timeoutId;
+function debouncedUpdate() {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(updateOverflowClasses, 50);
+}
+
+window.addEventListener("resize", debouncedUpdate);
+window.addEventListener("popstate", debouncedUpdate);
+
+const observer = new MutationObserver((mutations) => {
+  const hasRelevantChange = mutations.some((m) =>
+    [...m.addedNodes, ...m.removedNodes].some(
+      (node) =>
+        node.nodeType === 1 &&
+        (node.matches?.("pre, table") || node.querySelector?.("pre, table")),
+    ),
+  );
+  if (hasRelevantChange) {
+    debouncedUpdate();
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
