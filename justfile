@@ -1,7 +1,7 @@
 alias b := build
-alias s := serve
+alias c := clean
 
 build:
     pnpm build
-serve:
-    pnpm serve
+clean:
+    pnpm clean
