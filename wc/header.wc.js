@@ -18,11 +18,11 @@ export default class EthmarksHeader extends HTMLElement {
     }
 
     const navItems = [
-      { name: "Home", href: "https://ethmarks.github.io/" },
-      { name: "About", href: "https://ethmarks.github.io/about/" },
-      { name: "Posts", href: "https://ethmarks.github.io/posts/" },
+      { name: "Home", href: "https://site-ethmarks.vercel.app/" },
+      { name: "About", href: "https://site-ethmarks.vercel.app/about" },
+      { name: "Posts", href: "https://site-ethmarks.vercel.app/posts" },
       { name: "Blips", href: "https://ethmarks.github.io/blips/" },
-      { name: "Projects", href: "https://ethmarks.github.io/tags/projects/" },
+      { name: "Projects", href: "https://site-ethmarks.vercel.app/projects/" },
     ];
 
     this.innerHTML = `
