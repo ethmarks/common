@@ -1,9 +1,7 @@
 export default class EthmarksFooter extends HTMLElement {
   connectedCallback() {
     const hydrate = this.hasAttribute("hydrate");
-    const source =
-      this.getAttribute("source") ||
-      "https://github.com/ethmarks/ethmarks.github.io";
+    const source = this.getAttribute("source") || "https://github.com/ethmarks";
     const currentYear = new Date().getFullYear();
 
     const existingFooter = this.querySelector(":scope > footer");
