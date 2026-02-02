@@ -27,7 +27,7 @@ export default class EthmarksHeader extends HTMLElement {
 
     this.innerHTML = `
       <header class="${bDayClass}">
-          <a href="https://ethmarks.github.io/" id="title" tabindex="0" aria-label="Home">Ethan Marks</a>
+          <a href="${navItems[0].href}" id="title" tabindex="0" aria-label="Home">Ethan Marks</a>
           <nav>
               ${navItems
                 .map((item) => {
