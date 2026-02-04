@@ -14,6 +14,7 @@ function updateOverflowClasses() {
     const parentWidth = parent ? parent.clientWidth : window.innerWidth;
     if (elementWidth === 0) return;
     el.classList.toggle("width-overflow", elementWidth > parentWidth);
+    el.classList.toggle("no-width-overflow", elementWidth < parentWidth);
   });
 }
 

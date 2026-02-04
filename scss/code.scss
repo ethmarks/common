@@ -3,7 +3,7 @@
 pre {
     position: relative;
     font-family: var(--font-monospace);
-    width: fit-content;
+    width: auto;
     white-space: pre;
     overflow-x: auto;
     display: block;
@@ -15,8 +15,8 @@ pre {
     border: var(--border-standard);
     transition: var(--transition-transform-shadow);
 
-    &.width-overflow {
-        width: auto;
+    &.no-width-overflow {
+        width: fit-content;
     }
 
     @media (pointer: fine) {

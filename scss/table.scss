@@ -9,7 +9,8 @@ table {
     background: var(--color-panel);
     border: var(--border-standard);
     transition: var(--transition-transform-shadow);
-    overflow: hidden;
+    display: block;
+    overflow-x: auto;
 
     @media (pointer: fine) {
         &:hover {
@@ -37,9 +38,8 @@ table {
         }
     }
 
-    &.width-overflow {
-        display: block;
-        overflow-x: auto;
+    &.no-width-overflow {
+        display: table;
     }
 
     thead {
