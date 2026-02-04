@@ -21,7 +21,8 @@ export default class EthmarksHeader extends HTMLElement {
       { name: "Home", href: "https://site-ethmarks.vercel.app/" },
       { name: "About", href: "https://site-ethmarks.vercel.app/about" },
       { name: "Posts", href: "https://site-ethmarks.vercel.app/posts" },
-      { name: "Blips", href: "https://ethmarks.github.io/blips/" },
+      { name: "Blips", href: "https://site-ethmarks.vercel.app/blips" },
+      { name: "Ink", href: "https://site-ethmarks.vercel.app/ink" },
       { name: "Projects", href: "https://site-ethmarks.vercel.app/projects/" },
     ];
 
