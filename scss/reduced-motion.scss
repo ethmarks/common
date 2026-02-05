@@ -7,6 +7,9 @@
 
     header {
         transform: translateX(-50%) translateY(0) translate3d(0, 0, 0) !important;
+    }
+
+    .animated header {
         animation: none !important;
     }
 }
